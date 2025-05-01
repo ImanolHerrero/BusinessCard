@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import * as htmlToImage from "html-to-image";
 import BusinessCard from "./components/businessCard";
 import { DownloadIcon } from "@radix-ui/react-icons";
+import Footer from "./components/Footer";
 
 function App() {
   const cardRef = useRef();
@@ -35,11 +36,8 @@ function App() {
 
   return (
     <div className="bg-gradient-to-br from-orange-200 via-neutral-100 to-zinc-700 min-h-screen w-full flex flex-col items-center justify-center text-white px-4">
-      {/* Contenedor principal limitado en ancho */}
       <div className="flex flex-col items-center w-full max-w-4xl">
-        {/* Inputs + tarjeta: en columna en móviles, en fila en pantallas medianas+ */}
         <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-center justify-center w-full">
-          {/* Inputs */}
           <div className="flex flex-col gap-2 w-full max-w-sm">
             <h1 className="text-zinc-900 font-bold text-2xl">Customize it!</h1>
             {Object.entries(cardData).map(([key, value]) => (
@@ -57,13 +55,11 @@ function App() {
             ))}
           </div>
 
-          {/* Card */}
           <div className="w-full flex justify-center">
             <BusinessCard ref={cardRef} data={cardData} />
           </div>
         </div>
 
-        {/* Botón de descarga */}
         <div className="mt-8 w-full flex justify-center items-center">
           <button
             onClick={downloadCardAsImage}
@@ -74,6 +70,7 @@ function App() {
           </button>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
